@@ -6,7 +6,9 @@
 #include "Player.h"
 
 #include "CharacterState.h"
-
+#include "Idling.h"
+#include "Chasing.h"
+#include "Searching.h"
 
 Enemy::Enemy(Player * player)
 	:GameObject("Enemy")
