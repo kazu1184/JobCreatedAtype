@@ -59,6 +59,9 @@
     <Filter Include="GameObject\Character\Enemy">
       <UniqueIdentifier>{112dc147-abb8-4599-993a-cd8c55077902}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{099cd762-1c06-4df6-935f-4ce73062cb14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -159,7 +162,24 @@
     <ClInclude Include="MapPosition.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy.h">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Chasing.h">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Idling.h">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Searching.h">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="A_Star.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -246,7 +266,21 @@
     <ClCompile Include="MapPosition.cpp">
       <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy.cpp">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Chasing.cpp">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Idling.cpp">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching.cpp">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="A_Star.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

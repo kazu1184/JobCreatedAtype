@@ -168,9 +168,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="A_Star.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Building.h" />
     <ClInclude Include="CharacterState.h" />
+    <ClInclude Include="Chasing.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
@@ -187,15 +189,18 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="Idling.h" />
     <ClInclude Include="KnockBackState.h" />
     <ClInclude Include="MapPosition.h" />
     <ClInclude Include="ModelMap.h" />
     <ClInclude Include="MoveState.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="Searching.h" />
     <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="StandState.h" />
     <ClInclude Include="StepTimer.h" />
@@ -205,8 +210,10 @@
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="A_Star.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Building.cpp" />
+    <ClCompile Include="Chasing.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -221,6 +228,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="Idling.cpp" />
     <ClCompile Include="KnockBackState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapPosition.cpp" />
@@ -236,6 +244,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="Searching.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
     <ClCompile Include="StandState.cpp" />
     <ClCompile Include="TiledMap.cpp" />

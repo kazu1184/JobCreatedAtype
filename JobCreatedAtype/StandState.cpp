@@ -25,13 +25,14 @@ StandState::~StandState()
 
 }
 
-void StandState::Initialize(GameObject * obj)
+bool StandState::Initialize(GameObject * obj)
 {
 	// スタティックキャスト
 	m_player = static_cast<Player*>(obj);
+	return true;
 }
 
-void StandState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
+bool StandState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 {
 	if (keyboard->IsKeyPressed(DirectX::Keyboard::Keys::Up))
 	{
@@ -44,8 +45,11 @@ void StandState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		m_player->SetDirection(Player::DIRECTION::BACKWARD);
 		m_player->ChangeState(m_player->GetMove());
 	}
+
+	return true;
 }
 
-void StandState::Finalize()
+bool StandState::Finalize()
 {
+	return true;
 }

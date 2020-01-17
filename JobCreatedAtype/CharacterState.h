@@ -19,8 +19,8 @@ class CharacterState
 		virtual ~CharacterState() = default;
 
 		// ƒƒ“ƒoŠÖ”
-		virtual void Initialize(GameObject* obj) = 0;
-		virtual void Update(DirectX::Keyboard::KeyboardStateTracker* keyboard) = 0;
-		virtual void Finalize() = 0;
+		virtual bool Initialize(GameObject* obj) = 0;
+		virtual bool Update(DirectX::Keyboard::KeyboardStateTracker* keyboard = nullptr) = 0;
+		virtual bool Finalize() = 0;
 };
 

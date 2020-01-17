@@ -26,13 +26,14 @@ MoveState::~MoveState()
 {
 }
 
-void MoveState::Initialize(GameObject * obj)
+bool MoveState::Initialize(GameObject * obj)
 {
 	// スタティックキャスト
 	m_player = static_cast<Player*>(obj);
+	return true;
 }
 
-void MoveState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
+bool MoveState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 {
 	DirectX::SimpleMath::Vector3 dir = GameContext<GameObjectManager>::Get()->GetCamera()->getEye();
 	dir.Normalize();
@@ -56,8 +57,11 @@ void MoveState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		m_player->SetDirection(Player::DIRECTION::NONE);
 		m_player->ChangeState(m_player->GetStand());
 	}
+
+	return true;
 }
 
-void MoveState::Finalize()
+bool MoveState::Finalize()
 {
+	return true;
 }

@@ -28,8 +28,8 @@ class MoveState : public CharacterState
 		MoveState();
 		~MoveState();
 
-		void Initialize(GameObject* obj)override;
-		void Update(DirectX::Keyboard::KeyboardStateTracker* keyboard)override;
-		void Finalize()override;
+		bool Initialize(GameObject* obj)override;
+		bool Update(DirectX::Keyboard::KeyboardStateTracker* keyboard = nullptr)override;
+		bool Finalize()override;
 };
 

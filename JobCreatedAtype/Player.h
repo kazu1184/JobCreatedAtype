@@ -76,6 +76,8 @@ class Player : public GameObject
 
 		float GetAngle() { return m_angle; }
 
+		MapPosition* GetMapPosition() { return m_playerMapPos; }
+
 		// ó‘Ô‘JˆÚ
 		void ChangeState(CharacterState* state)
 		{

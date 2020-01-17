@@ -21,13 +21,14 @@ KnockBackState::~KnockBackState()
 {
 }
 
-void KnockBackState::Initialize(GameObject * obj)
+bool KnockBackState::Initialize(GameObject * obj)
 {
 	// スタティックキャスト
 	m_player = static_cast<Player*>(obj);
+	return true;
 }
 
-void KnockBackState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
+bool KnockBackState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 {
 	//ToDo knockback
 	DirectX::SimpleMath::Vector3 dir = GameContext<GameObjectManager>::Get()->GetCamera()->getEye();
@@ -58,8 +59,11 @@ void KnockBackState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 			m_player->ChangeState(m_player->GetStand());
 		}
 	}
+
+	return true;
 }
 
-void KnockBackState::Finalize()
+bool KnockBackState::Finalize()
 {
+	return true;
 }
