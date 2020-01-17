@@ -30,7 +30,7 @@ class Searching : public CharacterState
 	public: // メンバ関数
 		
 			// コンストラクタ
-			Searching(const std::string& mapFile);
+			Searching();
 			// 初期化する
 			bool Initialize(GameObject* object)override;
 			// 更新する

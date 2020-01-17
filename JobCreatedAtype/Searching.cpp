@@ -3,27 +3,24 @@
 #include "Enemy.h"
 #include "ModelMap.h"
 #include "MapPosition.h"
+#include "GameObjectManager.h"
+#include "GameContext.h"
 
 // コンストラクタ
-Searching::Searching(const std::string& mapFile)
-	: 
-	m_mapFile(mapFile) 										// マップファイル
+Searching::Searching()
 {
 }
+
 
 bool Searching::Initialize(GameObject* object)
 {
 	m_enemy = static_cast<Enemy*>(object);
 	m_startPosition = new MapPosition(0, 0);
 	m_endPosition = new MapPosition(0, 0);
-
-
-	// TiledMapオブジェクトを生成する
-	m_tiledMap = std::make_unique<TiledMap>();
-	// TiledMapオブジェクトを初期化する
-	m_tiledMap->Load(m_mapFile);
+	// マップの検索
+	ModelMap* map = static_cast<ModelMap*>(GameContext<GameObjectManager>::Get()->Find("Map")[0]);
 	// AStarオブジェクトを生成する
-	m_pathFinding = std::make_unique<A_Star>(m_tiledMap.get());
+	m_pathFinding = std::make_unique<A_Star>(map->GetTiledMap());
 	// AStarオブジェクトを初期化する
 	m_pathFinding->Initialize();
 
@@ -60,6 +57,9 @@ bool Searching::Finalize()
 	m_pathFinding.reset();
 	// Mapオブジェクトを解放する
 	m_tiledMap.reset();
+	// 開始位置と終了ポインタの削除
+	delete m_startPosition;
+	delete m_endPosition;
 
 	return true;
 }

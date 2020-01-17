@@ -261,6 +261,7 @@
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <MeshContentTask Include="Resources\Models\Enemy.FBX" />
     <MeshContentTask Include="Resources\Models\humanoid.FBX" />
     <MeshContentTask Include="Resources\Models\skydoom.FBX" />
   </ItemGroup>

@@ -13,6 +13,7 @@
 #include "DebugFont.h"
 #include "GameContext.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "FollowCamera.h"
 #include "ModelMap.h"
 
@@ -43,12 +44,14 @@ void PlayState::Initialize()
 	m_collisionManager->AllowCollision("Player", "Floor");
 	m_collisionManager->AllowCollision("Building", "Player");
 	GameContext<CollisionManager>::Register(m_collisionManager);
-	// プレイヤーの登録
-	std::unique_ptr<Player> player = std::make_unique<Player>();
-	GameContext<GameObjectManager>::Get()->Add(std::move(player));
 	// マップの生成・登録
 	std::unique_ptr<ModelMap> map = std::make_unique<ModelMap>();
-	GameContext<GameObjectManager>::Get()->Add(std::move(map));
+	m_objectManager->Add(std::move(map));
+	// プレイヤー・エネミーの登録
+	std::unique_ptr<Player> player = std::make_unique<Player>();
+	std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(player.get());
+	m_objectManager->Add(std::move(player));
+	m_objectManager->Add(std::move(enemy));
 
 	DirectX::EffectFactory* factory = new DirectX::EffectFactory(GameContext<DX::DeviceResources>::Get()->GetD3DDevice());
 	// テクスチャの読み込みパス指定 
@@ -59,6 +62,7 @@ void PlayState::Initialize()
 		L"Resources/Models/skydoom.cmo",
 		*factory
 	);
+	delete factory;
 }
 
 void PlayState::Update()

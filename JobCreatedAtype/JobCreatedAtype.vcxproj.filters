@@ -302,6 +302,9 @@
     <MeshContentTask Include="Resources\Models\humanoid.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Resources\Models\Enemy.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\StageData\map.csv">
