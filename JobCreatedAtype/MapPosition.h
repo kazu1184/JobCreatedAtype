@@ -9,7 +9,7 @@ class MapPosition : public Component
 
 	public:
 		// コンストラクタ・デストラクタ
-		MapPosition(int x = 0, int y = 0);
+		MapPosition();
 		~MapPosition();
 
 		// メンバ関数
