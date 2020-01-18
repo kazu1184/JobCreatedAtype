@@ -28,6 +28,7 @@ float A_Star::Distance(MapPosition* position, MapPosition* position1)
 	// 計算結果を返す
 	return (float)sqrt((deltaRow * deltaRow) + (deltaColumn * deltaColumn));
 }
+
 // 最短経路オブジェクトを初期化する
 bool A_Star::Initialize()
 {

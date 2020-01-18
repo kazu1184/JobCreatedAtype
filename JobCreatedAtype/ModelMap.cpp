@@ -43,7 +43,7 @@ ModelMap::ModelMap()
 				std::unique_ptr<Building> buil = std::make_unique<Building>();
 				buil->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
 				MapPosition* pos = buil->AddComponent<MapPosition>();
-				pos->SetMapPosition(j, i);
+				pos->SetMapPosition(i, j);
 				objManager->Add(std::move(buil));
 			}
 			else if (tileId == TiledMap::MAP_ATTRIBUTE::P)
@@ -51,7 +51,7 @@ ModelMap::ModelMap()
 				std::unique_ptr<Floor> floor = std::make_unique<Floor>();
 				floor->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
 				MapPosition* pos = floor->AddComponent<MapPosition>();
-				pos->SetMapPosition(j, i);
+				pos->SetMapPosition(i, j);
 				objManager->Add(std::move(floor));
 			}
 		}

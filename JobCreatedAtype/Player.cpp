@@ -11,6 +11,7 @@
 #include "FollowCamera.h"
 #include "GameObjectManager.h"
 #include "CollisionManager.h"
+#include "ModelMap.h"
 
 #include "CharacterState.h"
 #include "StandState.h"
@@ -40,6 +41,9 @@ Player::Player()
 	m_transform->SetRotation(DirectX::SimpleMath::Vector3(0.f, 90.f, 0.f));
 
 	m_playerMapPos = AddComponent<MapPosition>();
+	m_playerMapPos->SetMapPosition(new MapPosition(7, 5));
+
+	m_transform->SetPosition(DirectX::SimpleMath::Vector3(m_playerMapPos->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0, m_playerMapPos->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
 
 	// “–‚½‚è”»’è‚Ì’Ç‰Á
 	BoxCollider* box = AddComponent<BoxCollider>();
