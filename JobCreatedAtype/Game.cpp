@@ -12,6 +12,7 @@
 #include "TitleState.h"
 #include "PlayState.h"
 #include "PauseState.h"
+#include "ResultState.h"
 
 //Debug
 #include "Player.h"
@@ -63,6 +64,7 @@ void Game::Initialize(HWND window, int width, int height)
 	m_gameStateManager->RegisterState<TitleState>("Title");
 	m_gameStateManager->RegisterState<PlayState>("Play");
 	m_gameStateManager->RegisterState<PauseState>("Pause");
+	m_gameStateManager->RegisterState<ResultState>("Result");
 	m_gameStateManager->RequestState("Title");
 	GameContext<GameStateManager>::Register(m_gameStateManager);
 }

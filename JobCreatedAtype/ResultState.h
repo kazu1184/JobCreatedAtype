@@ -1,24 +1,23 @@
 //======================================================
-// File Name	: TitleState.h
-// Summary		: タイトルステイト
-// Date			: 2019/011/19
+// File Name	: ResultState.h
+// Summary		: リザルトステイト
+// Date			: 2019/01/19
 // Author		: Kazuaki Hashimoto
 //======================================================
 #pragma once
 
 #include "GameState.h"
 
-class TitleState : public GameState
+class ResultState : public GameState
 {
-	private: 
+	private:
 		// Debugカウント
 		int m_count;
-
+	
 	public:
-
 		// コンストラクタ・デストラクタ
-		TitleState();
-		virtual ~TitleState();
+		ResultState();
+		virtual ~ResultState();
 
 		// メンバ関数
 		void Initialize() override;

@@ -180,6 +180,7 @@
     <ClInclude Include="Node.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="ResultState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -281,6 +282,7 @@
     <ClCompile Include="A_Star.cpp">
       <Filter>AI</Filter>
     </ClCompile>
+    <ClCompile Include="ResultState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
