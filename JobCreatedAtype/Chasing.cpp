@@ -21,7 +21,7 @@ bool Chasing::Initialize(GameObject * object)
 bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 {
 	// 前方方向の速度
-	DirectX::SimpleMath::Vector3 Forward(0.03f, 0.0f, 0.0f);
+	DirectX::SimpleMath::Vector3 Forward(0.1f, 0.0f, 0.0f);
 
 	// 最短経路配列が0の場合
 	if (m_route.size() == 0)
@@ -29,7 +29,7 @@ bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		// 開始位置を取得する
 		MapPosition* position = m_enemy->GetStartPosition();
 		// 位置を補正する
-		m_position = DirectX::SimpleMath::Vector3((float)position->GetX(), 0.0f, (float)position->GetY());
+		m_position = DirectX::SimpleMath::Vector3((float)position->GetX()* ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0.0f, (float)position->GetY()* ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2);
 		// 最短経路を取得する
 		m_route = m_enemy->GetRoute();
 	}
@@ -38,7 +38,7 @@ bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 	DirectX::SimpleMath::Vector2 direction((float)m_route[m_index + 1]->GetX() - m_route[m_index]->GetX(),
 		(float)m_route[m_index + 1]->GetY() - m_route[m_index]->GetY());
 	// 向きを計算する
-	float angle = -atan2(direction.x, direction.y);
+	float angle = -atan2(direction.y, direction.x);
 	// 回転角を計算する
 	DirectX::SimpleMath::Matrix rotation = DirectX::SimpleMath::Matrix::CreateRotationY(angle);
 	// 速度を計算する
@@ -48,9 +48,9 @@ bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 	// 移動ベクトルを位置に加算する
 	m_position += velocity;
 	// 敵の位置を設定する
-	m_enemy->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(m_position.x * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0.0f, m_position.z * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
+	m_enemy->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(m_position.x , 0.0f, m_position.z));
 	// 移動ベクトルの積算
-	if (m_sum_translation >= 1.0f)
+	if (m_sum_translation >= ModelMap::MAP_SIZE)
 	{
 		// 移動ベクトルの積算をリセットする
 		m_sum_translation = 0.0f;
