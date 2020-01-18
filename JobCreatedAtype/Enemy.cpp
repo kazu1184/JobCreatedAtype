@@ -20,6 +20,9 @@
 #include "Idling.h"
 #include "Chasing.h"
 #include "Searching.h"
+#include "RandomState.h"
+
+#include "DebugFont.h"
 
 Enemy::Enemy(Player * player)
 	: GameObject("Enemy")
@@ -30,6 +33,30 @@ Enemy::Enemy(Player * player)
 	DirectX::EffectFactory fx(GameContext<DX::DeviceResources>::Get()->GetD3DDevice());
 	fx.SetDirectory(L"Resources\\Models");
 	m_enemyModel = DirectX::Model::CreateFromCMO(GameContext<DX::DeviceResources>::Get()->GetD3DDevice(), L"Resources\\Models\\Enemy.cmo", fx);
+
+	// コンポーネントを追加
+	m_transform = AddComponent<Transform>();
+
+	// 当たり判定
+	SphereCollider* sphere = AddComponent<SphereCollider>();
+	sphere->SetRadius(0.5f);
+	GameContext<CollisionManager>::Get()->Add("Enemy", sphere);
+
+	// 現在のマップポジション
+	m_currentPosition = AddComponent<MapPosition>();
+	m_currentPosition->SetMapPosition(5, 5);
+
+	// STARTポジション
+	m_startPosition = new MapPosition(5,5);
+	m_endPosition = new MapPosition(5,5);
+
+	// ポジションを補正する
+	m_transform->SetPosition(DirectX::SimpleMath::Vector3(m_startPosition->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0.0f, m_startPosition->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
+	m_transform->SetScale(DirectX::SimpleMath::Vector3(0.1f, 0.1f, 0.1f));
+
+	// プレイヤーポインタの代入
+	m_target = player;
+
 
 	// Idlingオブジェクトを生成する
 	m_idlingState = std::make_unique<Idling>();
@@ -46,22 +73,13 @@ Enemy::Enemy(Player * player)
 	// Chasingオブジェクトを初期化する
 	m_chasingState->Initialize(this);
 
-	// 現在の状態をアイドリング状態に設定する
-	ChangeState(m_idlingState.get());
-	
-	// コンポーネントを追加
-	m_transform = AddComponent<Transform>();
-	m_startPosition = AddComponent<MapPosition>();
-	m_endPosition = AddComponent<MapPosition>();
-	SphereCollider* sphere = AddComponent<SphereCollider>();
-	sphere->SetRadius(0.5f);
-	GameContext<CollisionManager>::Get()->Add("Enemy", sphere);
-	// ポジションを補正する
-	m_transform->SetPosition(DirectX::SimpleMath::Vector3(m_startPosition->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0.0f, m_startPosition->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
-	m_transform->SetScale(DirectX::SimpleMath::Vector3(0.1f, 0.1f, 0.1f));
-	// プレイヤーポインタの代入
-	m_target = player;
+	// Randomオブジェクトを生成する
+	m_randomState = std::make_unique<RandomState>();
+	// Randomオブジェクトを初期化する
+	m_randomState->Initialize(this);
 
+	// 現在の状態をアイドリング状態に設定する
+	ChangeState(m_randomState.get());
 }
 
 Enemy::~Enemy()
@@ -127,6 +145,12 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
+	DebugFont* debugFont = DebugFont::GetInstance();
+	debugFont->print(10, 10, L"X :  %d", m_currentPosition->GetX());
+	debugFont->draw();
+	debugFont->print(10, 40, L"Y :  %d", m_currentPosition->GetY());
+	debugFont->draw();
+
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	// エネミーモデルの描画

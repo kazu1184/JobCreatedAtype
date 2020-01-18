@@ -57,6 +57,7 @@ bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		// インデックスが配列数を超えない場合
 		if (m_index < (int)m_route.size() - 2)
 		{
+			m_enemy->GetComponent<MapPosition>()->SetMapPosition(m_route[m_index]);
 			// インデックスを加算する
 			m_index++;
 		}

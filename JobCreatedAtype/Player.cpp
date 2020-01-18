@@ -88,12 +88,6 @@ void Player::Update()
 
 void Player::Render()
 {
-	DebugFont* debugFont = DebugFont::GetInstance();
-	debugFont->print(10, 10, L"X :  %d",m_playerMapPos->GetX());
-	debugFont->draw();
-	debugFont->print(10, 40, L"Y :  %d",m_playerMapPos->GetY());
-	debugFont->draw();
-
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	// プレイヤーモデルの描画

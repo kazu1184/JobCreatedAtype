@@ -181,6 +181,9 @@
       <Filter>AI</Filter>
     </ClInclude>
     <ClInclude Include="ResultState.h" />
+    <ClInclude Include="RandomState.h">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -283,6 +286,9 @@
       <Filter>AI</Filter>
     </ClCompile>
     <ClCompile Include="ResultState.cpp" />
+    <ClCompile Include="RandomState.cpp">
+      <Filter>GameObject\Character\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

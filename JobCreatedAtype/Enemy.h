@@ -9,6 +9,7 @@ class Chasing;
 class Searching;
 class MapPosition;
 class Player;
+class RandomState;
 
 class Enemy : public GameObject
 {
@@ -21,6 +22,8 @@ class Enemy : public GameObject
 		MapPosition* m_startPosition;
 		// 終了位置
 		MapPosition* m_endPosition;
+		// 現在位置
+		MapPosition* m_currentPosition;
 		// 保存用位置
 		int m_row;
 		int m_colum;
@@ -37,6 +40,8 @@ class Enemy : public GameObject
 		std::unique_ptr<Searching> m_searchingState;
 		// 追跡状態
 		std::unique_ptr<Chasing> m_chasingState;
+		// ランダム追跡状態
+		std::unique_ptr<RandomState> m_randomState;
 
 	public:
 		Enemy(Player* player);
@@ -66,6 +71,12 @@ class Enemy : public GameObject
 		Chasing* GetChasingState() const
 		{
 			return m_chasingState.get();
+		}
+
+		// Random状態を取得する
+		RandomState* GetRandomState()const
+		{
+			return m_randomState.get();
 		}
 
 		// 状態遷移
