@@ -32,7 +32,7 @@ ModelMap::ModelMap()
 		for (int j = 0; j < m_tiledMap->GetMapColumn(); j++)
 		{
 			// データの取得
-			int tileId = m_tiledMap->GetMap()[j][i];
+			int tileId = m_tiledMap->GetMap()[i][j];
 
 			// 位置の計算
 			float x = i * MAP_SIZE - offsetX;

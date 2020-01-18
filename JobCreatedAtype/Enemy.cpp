@@ -20,6 +20,8 @@
 
 Enemy::Enemy(Player * player)
 	: GameObject("Enemy")
+	, m_row(0)
+	, m_colum(0)
 {
 	// モデルデータの読み込み
 	DirectX::EffectFactory fx(GameContext<DX::DeviceResources>::Get()->GetD3DDevice());
@@ -71,13 +73,16 @@ void Enemy::Update()
 	if (m_currentState == m_idlingState.get())
 	{
 		// 開始位置の更新
-		SetStartPosition(GetEndPosition());
+		SetStartPosition(new MapPosition(m_row,m_colum));
 		// 開始位置を取得する
 		MapPosition* startPosition = GetStartPosition();
 		// 敵の位置を設定する
 		m_transform->SetPosition(DirectX::SimpleMath::Vector3(startPosition->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0.0f, startPosition->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
 		// 終了位置を設定する
-		SetEndPosition(m_target->GetMapPosition());
+		MapPosition* endPosition = m_target->GetMapPosition();
+		SetEndPosition(endPosition);
+		m_row = endPosition->GetX();
+		m_colum = endPosition->GetY();
 		// 現在の状態をサーチ状態に設定する
 		ChangeState(GetSearchingState());
 	}

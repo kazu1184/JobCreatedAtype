@@ -21,6 +21,9 @@ class Enemy : public GameObject
 		MapPosition* m_startPosition;
 		// 終了位置
 		MapPosition* m_endPosition;
+		// 保存用位置
+		int m_row;
+		int m_colum;
 		// 最短経路
 		std::vector<MapPosition*> m_route;
 		// 移動行列

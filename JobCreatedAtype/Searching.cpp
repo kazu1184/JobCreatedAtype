@@ -30,10 +30,12 @@ bool Searching::Initialize(GameObject* object)
 // 更新する
 bool Searching::Update(DirectX::Keyboard::KeyboardStateTracker* keyboard)
 {
+	MapPosition* sMap = m_enemy->GetStartPosition();
+	MapPosition* eMap = m_enemy->GetEndPosition();
 	// 開始位置を取得する
-	m_startPosition = m_enemy->GetStartPosition();
+	m_startPosition->SetMapPosition(sMap->GetX(),sMap->GetY());
 	// 終了位置を取得する
-	m_endPosition = m_enemy->GetEndPosition();
+	m_endPosition->SetMapPosition(eMap->GetX(), eMap->GetY());
 	// 最短経路を探索する
 	if (m_pathFinding->Search(m_startPosition, m_endPosition) == false)
 		return false;
