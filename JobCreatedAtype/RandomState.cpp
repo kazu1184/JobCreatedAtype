@@ -37,11 +37,11 @@ bool RandomState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		std::random_device seedGenerator;
 		std::mt19937 randomGenerator(seedGenerator());
 		std::uniform_int_distribution<int> direction(0, 3);
-
+		// 方向のランダム
 		m_direction = direction(randomGenerator);
-
+		// ヴェロシティの初期化
 		m_velocity = DirectX::SimpleMath::Vector3::Zero;
-
+		// 方向で進めるかを確認
 		switch (m_direction)
 		{
 		case 0:
@@ -75,7 +75,7 @@ bool RandomState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		default:
 			break;
 		}
-
+		// 速度の数値が入っていれば移動中に移す
 		if (FloatEquals(m_velocity.x, 0.0f) == false || FloatEquals(m_velocity.z, 0.0f) == false)
 		{
 			m_count = THINKING_INTERVAL;
