@@ -6,12 +6,15 @@
 
 #include "Transform.h"
 #include "MapPosition.h"
+#include "SphereCollider.h"
 #include "ModelMap.h"
 #include "Player.h"
-#include "GameContext.h"
 #include "FollowCamera.h"
+
+#include "GameContext.h"
 #include "GameObjectManager.h"
 #include "CollisionManager.h"
+#include "GameStateManager.h"
 
 #include "CharacterState.h"
 #include "Idling.h"
@@ -50,6 +53,9 @@ Enemy::Enemy(Player * player)
 	m_transform = AddComponent<Transform>();
 	m_startPosition = AddComponent<MapPosition>();
 	m_endPosition = AddComponent<MapPosition>();
+	SphereCollider* sphere = AddComponent<SphereCollider>();
+	sphere->SetRadius(0.5f);
+	GameContext<CollisionManager>::Get()->Add("Enemy", sphere);
 	// ƒ|ƒWƒVƒ‡ƒ“‚ð•â³‚·‚é
 	m_transform->SetPosition(DirectX::SimpleMath::Vector3(m_startPosition->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 0.0f, m_startPosition->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
 	m_transform->SetScale(DirectX::SimpleMath::Vector3(0.1f, 0.1f, 0.1f));
@@ -132,4 +138,8 @@ void Enemy::Render()
 
 void Enemy::OnCollision(GameObject * object)
 {
+	if (object->GetTag() == "Player")
+	{
+		GameContext<GameStateManager>::Get()->RequestState("Result");
+	}
 }
