@@ -13,6 +13,10 @@ class RandomState;
 
 class Enemy : public GameObject
 {
+	public:
+		// サーチをする距離
+		static const float START_DISANCE;
+
 	private:
 		// エネミーモデル
 		std::unique_ptr<DirectX::Model> m_enemyModel;

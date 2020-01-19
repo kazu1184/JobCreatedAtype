@@ -17,6 +17,7 @@
 Building::Building()
 	: GameObject("Building")
 {
+	m_activeFlag = false;
 	ID3D11Device* device = GameContext<DX::DeviceResources>::Get()->GetD3DDevice();
 	// ÉÇÉfÉãÇÃì«Ç›çûÇ›
 	DirectX::EffectFactory* factory = new DirectX::EffectFactory(device);
@@ -50,6 +51,8 @@ void Building::Update()
 
 void Building::Render()
 {
+	if (!m_activeFlag)
+		return;
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();

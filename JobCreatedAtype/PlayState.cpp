@@ -43,6 +43,7 @@ void PlayState::Initialize()
 	m_collisionManager = std::make_unique<CollisionManager>();
 	m_collisionManager->AllowCollision("Player", "Floor");
 	m_collisionManager->AllowCollision("Building", "Player");
+	m_collisionManager->AllowCollision("Floor", "Enemy");
 	m_collisionManager->AllowCollision("Player", "Enemy");
 	GameContext<CollisionManager>::Register(m_collisionManager);
 	// マップの生成・登録

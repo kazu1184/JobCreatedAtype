@@ -24,6 +24,8 @@
 
 #include "DebugFont.h"
 
+const float Enemy::START_DISANCE = 10.0f;
+
 Enemy::Enemy(Player * player)
 	: GameObject("Enemy")
 	, m_row(0)
@@ -94,10 +96,27 @@ void Enemy::Update()
 	// 現在の状態を更新する
 	bool result = m_currentState->Update();
 
-	if (m_currentState == m_idlingState.get())
+	m_row = m_endPosition->GetX();
+	m_colum = m_endPosition->GetY();
+
+	// ランダムサーチ状態
+	if ( m_currentState == m_randomState.get())
+	{
+		// プレイヤーとエネミーの二点の距離を計算
+		float distance = DirectX::SimpleMath::Vector3::Distance(m_transform->GetPosition(), m_target->GetTransform()->GetPosition());
+		// A*に切り替える
+		if (distance <= START_DISANCE && result)
+		{
+			ChangeState(m_idlingState.get());
+		}
+	}
+	// アイドリング状態
+	else if (m_currentState == m_idlingState.get())
 	{
 		// 開始位置の更新
-		SetStartPosition(new MapPosition(m_row,m_colum));
+		SetStartPosition(m_currentPosition);
+		//SetStartPosition(m_currentPosition);
+
 		// 開始位置を取得する
 		MapPosition* startPosition = GetStartPosition();
 		// 敵の位置を設定する
@@ -105,8 +124,6 @@ void Enemy::Update()
 		// 終了位置を設定する
 		MapPosition* endPosition = m_target->GetMapPosition();
 		SetEndPosition(endPosition);
-		m_row = endPosition->GetX();
-		m_colum = endPosition->GetY();
 		// 現在の状態をサーチ状態に設定する
 		ChangeState(GetSearchingState());
 	}
@@ -133,24 +150,28 @@ void Enemy::Update()
 		// 追跡状態が更新され、正常終了の場合
 		if (result)
 		{
-			// 追跡中(状態を変更しない)
+			// 追跡中
 		}
 		else
 		{
-			// 追跡が終了したので現在の状態をアイドリング状態に変更する
-			ChangeState(m_idlingState.get());
+			// プレイヤーとエネミーの二点の距離を計算
+			float distance = DirectX::SimpleMath::Vector3::Distance(m_transform->GetPosition(), m_target->GetTransform()->GetPosition());
+			// ランダムサーチに切り替える
+			if (distance >= START_DISANCE)
+			{
+				ChangeState(m_randomState.get());
+			}
+			else
+			{
+				// 追跡が終了したので現在の状態をアイドリング状態に変更する
+				ChangeState(m_idlingState.get());
+			}
 		}
 	}
 }
 
 void Enemy::Render()
 {
-	DebugFont* debugFont = DebugFont::GetInstance();
-	debugFont->print(10, 10, L"X :  %d", m_currentPosition->GetX());
-	debugFont->draw();
-	debugFont->print(10, 40, L"Y :  %d", m_currentPosition->GetY());
-	debugFont->draw();
-
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	// エネミーモデルの描画
@@ -166,4 +187,10 @@ void Enemy::OnCollision(GameObject * object)
 	{
 		GameContext<GameStateManager>::Get()->RequestState("Result");
 	}
+
+	if (object->GetTag() == "Floor")
+	{
+		m_currentPosition->SetMapPosition(object->GetComponent<MapPosition>());
+	}
+
 }

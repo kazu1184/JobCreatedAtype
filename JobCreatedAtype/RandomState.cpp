@@ -47,28 +47,28 @@ bool RandomState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		case 0:
 			if (m_map->GetTiledMap()->GetMap()[m_currentMapPos->GetX() - 1][m_currentMapPos->GetY()] == 0)
 			{
-				m_currentMapPos->SetX(m_currentMapPos->GetX() - 1);
+				//m_currentMapPos->SetX(m_currentMapPos->GetX() - 1);
 				m_velocity.x = -ModelMap::MAP_SIZE;
 			}
 			break;
 		case 1:
 			if (m_map->GetTiledMap()->GetMap()[m_currentMapPos->GetX() + 1][m_currentMapPos->GetY()] == 0)
 			{
-				m_currentMapPos->SetX(m_currentMapPos->GetX() + 1);
+				//m_currentMapPos->SetX(m_currentMapPos->GetX() + 1);
 				m_velocity.x = ModelMap::MAP_SIZE;
 			}
 			break;
 		case 2:
 			if (m_map->GetTiledMap()->GetMap()[m_currentMapPos->GetX()][m_currentMapPos->GetY() - 1] == 0)
 			{
-				m_currentMapPos->SetY(m_currentMapPos->GetY() - 1);
+				//m_currentMapPos->SetY(m_currentMapPos->GetY() - 1);
 				m_velocity.z = -ModelMap::MAP_SIZE;
 			}
 			break;
 		case 3:
 			if (m_map->GetTiledMap()->GetMap()[m_currentMapPos->GetX()][m_currentMapPos->GetY() + 1] == 0)
 			{
-				m_currentMapPos->SetY(m_currentMapPos->GetY() + 1);
+				//m_currentMapPos->SetY(m_currentMapPos->GetY() + 1);
 				m_velocity.z = ModelMap::MAP_SIZE;
 			}
 			break;
@@ -93,7 +93,11 @@ bool RandomState::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		m_count--;
 	}
 
-	return false;
+	// ˆÚ“®Š®—¹‚È‚çTrue‚ð•Ô‚·
+	if (m_count == 0)
+		return true;
+	else
+		return false;
 }
 
 bool RandomState::Finalize()

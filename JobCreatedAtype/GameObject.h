@@ -29,6 +29,8 @@ class GameObject
 		std::list<Component*> m_componentList;
 		// 位置・スケール
 		Transform* m_transform;
+		// アクティブフラグ
+		bool m_activeFlag;
 
 	public:
 
@@ -53,6 +55,7 @@ class GameObject
 
 		std::string GetTag() const { return m_tag; }
 
+		void SetActive(bool flag) { m_activeFlag = flag; }
 
 		Transform* GetTransform()const { return m_transform; }
 

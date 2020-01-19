@@ -176,9 +176,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugFont.h" />
-    <ClInclude Include="DebugObj.h" />
     <ClInclude Include="DeviceResources.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Floor.h" />
@@ -219,9 +217,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugFont.cpp" />
-    <ClCompile Include="DebugObj.cpp" />
     <ClCompile Include="DeviceResources.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Floor.cpp" />

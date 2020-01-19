@@ -6,6 +6,7 @@
 GameObject::GameObject(const std::string& tag)
 	: m_componentList()
 	, m_deleteFlag(false)
+	, m_activeFlag(true)
 	, m_tag(tag)
 	, m_transform()
 {

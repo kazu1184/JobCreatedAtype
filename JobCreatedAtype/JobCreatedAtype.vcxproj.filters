@@ -99,17 +99,11 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>Manager\CollisionManager</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Debug</Filter>
-    </ClInclude>
     <ClInclude Include="GameObjectManager.h">
       <Filter>Manager\GameObjectManager</Filter>
     </ClInclude>
     <ClInclude Include="FollowCamera.h">
       <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugObj.h">
-      <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>GameObject\Character\Player</Filter>
@@ -216,17 +210,11 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Manager\CollisionManager</Filter>
     </ClCompile>
-    <ClCompile Include="Debug.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>Manager\GameObjectManager</Filter>
     </ClCompile>
     <ClCompile Include="FollowCamera.cpp">
       <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugObj.cpp">
-      <Filter>Debug</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>GameObject\Character\Player</Filter>

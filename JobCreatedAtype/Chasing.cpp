@@ -63,10 +63,8 @@ bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 		}
 		else
 		{
-			// 初期値に戻す
-			m_index = 0;
-			// 終了位置まで到達したら最短経路配列をクリアする
-			m_route.clear();
+			m_enemy->GetComponent<MapPosition>()->SetMapPosition(m_route[m_index]);
+			ClearRoute();
 			return false;
 		}
 	}
@@ -78,3 +76,12 @@ bool Chasing::Finalize()
 {
 	return true;
 }
+
+void Chasing::ClearRoute()
+{
+	// 初期値に戻す
+	m_index = 0;
+	// 終了位置まで到達したら最短経路配列をクリアする
+	m_route.clear();
+}
+

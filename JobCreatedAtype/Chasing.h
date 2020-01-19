@@ -20,6 +20,7 @@ class Chasing : public CharacterState
 		// インデックス
 		int m_index;
 		float m_sum_translation;
+
 	public:
 		// コンストラクタ
 		Chasing();
@@ -30,4 +31,6 @@ class Chasing : public CharacterState
 		bool Update(DirectX::Keyboard::KeyboardStateTracker* keyboard = nullptr)override;
 		// 後始末をする
 		bool Finalize()override;
+		// ルートをクリア
+		void ClearRoute();
 };
