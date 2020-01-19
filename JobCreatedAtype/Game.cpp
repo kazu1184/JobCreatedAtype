@@ -15,8 +15,6 @@
 #include "ResultState.h"
 
 //Debug
-#include "Player.h"
-
 extern void ExitGame();
 
 using namespace DirectX;
@@ -58,7 +56,6 @@ void Game::Initialize(HWND window, int width, int height)
 
 	DebugFont* debugFont = DebugFont::GetInstance();
 	debugFont->create(m_deviceResources->GetD3DDevice(), m_deviceResources->GetD3DDeviceContext());
-
 
 	m_gameStateManager = std::make_unique<GameStateManager>();
 	m_gameStateManager->RegisterState<TitleState>("Title");

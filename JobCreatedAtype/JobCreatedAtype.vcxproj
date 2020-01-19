@@ -62,15 +62,19 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ADX2LE\ADX2LE.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ADX2LE\ADX2LE.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ADX2LE\ADX2LE.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="ADX2LE\ADX2LE.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -168,11 +172,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ADX2LE\Adx2Le.h" />
     <ClInclude Include="A_Star.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Building.h" />
     <ClInclude Include="CharacterState.h" />
     <ClInclude Include="Chasing.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
@@ -211,10 +217,12 @@
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ADX2LE\Adx2Le.cpp" />
     <ClCompile Include="A_Star.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="Chasing.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -263,6 +271,7 @@
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <MeshContentTask Include="Resources\Models\Coin.FBX" />
     <MeshContentTask Include="Resources\Models\Enemy.FBX" />
     <MeshContentTask Include="Resources\Models\humanoid.FBX" />
     <MeshContentTask Include="Resources\Models\skydoom.FBX" />

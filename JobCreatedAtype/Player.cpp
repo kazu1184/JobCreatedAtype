@@ -19,7 +19,8 @@
 #include "MoveState.h"
 #include "KnockBackState.h"
 
-#include "DebugFont.h"
+#include "ADX2LE\Adx2Le.h"
+#include "Resources\Audio\bgm_acf.h"
 
 const float Player::CAMERA_DIRECTION = 2.0f;
 const float Player::INITIALIZE_ANGLE = 90.0f;
@@ -106,6 +107,7 @@ void Player::OnCollision(GameObject * object)
 
 	if (object->GetTag() == "Building")
 	{
+		GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_04);
 		// ノックバックステイトに切り替える
 		ChangeState(m_knockBackState.get());
 	}

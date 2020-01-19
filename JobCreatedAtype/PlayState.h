@@ -12,6 +12,7 @@
 
 class GameObjectManager;
 class CollisionManager;
+class Adx2Le;
 
 class PlayState : public GameState
 {
@@ -25,6 +26,8 @@ class PlayState : public GameState
 		std::unique_ptr<CollisionManager> m_collisionManager;
 		//スカイドーム
 		std::unique_ptr<DirectX::Model>   m_pSkyDoom;
+		// オーディオ
+		std::unique_ptr<Adx2Le> m_audio;
 
 	public:
 

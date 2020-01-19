@@ -62,6 +62,12 @@
     <Filter Include="AI">
       <UniqueIdentifier>{099cd762-1c06-4df6-935f-4ce73062cb14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{ddea10d7-a63b-46da-bf34-95fe4cec8870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Character\CoinItem">
+      <UniqueIdentifier>{0d0df751-8896-411e-9290-82659941a0ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -181,6 +187,12 @@
     <ClInclude Include="RayCollider.h">
       <Filter>Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="ADX2LE\Adx2Le.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>GameObject\Character\CoinItem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -283,6 +295,12 @@
     <ClCompile Include="RayCollider.cpp">
       <Filter>Component\Collider</Filter>
     </ClCompile>
+    <ClCompile Include="ADX2LE\Adx2Le.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>GameObject\Character\CoinItem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -305,6 +323,9 @@
       <Filter>Assets</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Resources\Models\Enemy.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Resources\Models\Coin.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
   </ItemGroup>

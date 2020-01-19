@@ -21,7 +21,7 @@ bool Chasing::Initialize(GameObject * object)
 bool Chasing::Update(DirectX::Keyboard::KeyboardStateTracker * keyboard)
 {
 	// 前方方向の速度
-	DirectX::SimpleMath::Vector3 Forward(0.1f, 0.0f, 0.0f);
+	DirectX::SimpleMath::Vector3 Forward(0.2f, 0.0f, 0.0f);
 
 	// 最短経路配列が0の場合
 	if (m_route.size() == 0)

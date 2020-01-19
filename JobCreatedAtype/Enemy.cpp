@@ -2,7 +2,10 @@
 #include "Enemy.h"
 
 #include <Effects.h>
+
 #include "DeviceResources.h"
+#include "ADX2LE\Adx2Le.h"
+#include "Resources\Audio\bgm_acf.h"
 
 #include "Transform.h"
 #include "MapPosition.h"
@@ -24,7 +27,7 @@
 
 #include "DebugFont.h"
 
-const float Enemy::START_DISANCE = 10.0f;
+const float Enemy::START_DISANCE = 20.0f;
 
 Enemy::Enemy(Player * player)
 	: GameObject("Enemy")
@@ -107,6 +110,10 @@ void Enemy::Update()
 		// A*に切り替える
 		if (distance <= START_DISANCE && result)
 		{
+			Adx2Le* audio = GameContext<Adx2Le>::Get();
+
+			audio->Stop();
+			audio->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_01);
 			ChangeState(m_idlingState.get());
 		}
 	}
@@ -159,6 +166,11 @@ void Enemy::Update()
 			// ランダムサーチに切り替える
 			if (distance >= START_DISANCE)
 			{
+				Adx2Le* audio = GameContext<Adx2Le>::Get();
+
+				audio->Stop();
+				audio->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_00);
+
 				ChangeState(m_randomState.get());
 			}
 			else
