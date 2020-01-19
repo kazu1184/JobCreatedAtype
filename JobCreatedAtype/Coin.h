@@ -8,8 +8,6 @@ class Coin : public GameObject
 	private:
 		// コインモデル
 		std::unique_ptr<DirectX::Model> m_coinModel;
-		// コインゲットフラグ
-		bool m_getFlag;
 
 	public:
 		Coin();
@@ -19,7 +17,5 @@ class Coin : public GameObject
 		void Render()override;
 		// 当たり判定
 		void OnCollision(GameObject* object)override;
-
-		bool GetFlag() { return m_getFlag; }
 };
 

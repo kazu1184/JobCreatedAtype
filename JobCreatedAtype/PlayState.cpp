@@ -18,6 +18,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Coin.h"
+#include "Goal.h"
 #include "FollowCamera.h"
 #include "ModelMap.h"
 
@@ -48,6 +49,7 @@ void PlayState::Initialize()
 	m_collisionManager->AllowCollision("Player", "Enemy");
 	m_collisionManager->AllowCollision("Building", "Camera");
 	m_collisionManager->AllowCollision("Coin", "Player");
+	m_collisionManager->AllowCollision("Goal", "Player");
 	GameContext<CollisionManager>::Register(m_collisionManager);
 
 	// オブジェクトマネージャー生成・登録
@@ -67,6 +69,9 @@ void PlayState::Initialize()
 	// コインオブジェクトの生成・登録
 	std::unique_ptr<Coin> coin = std::make_unique<Coin>();
 	m_objectManager->Add(std::move(coin));
+
+	std::unique_ptr<Goal> goal = std::make_unique<Goal>();
+	m_objectManager->Add(std::move(goal));
 
 	// オーディオの登録
 	m_audio = std::make_unique<Adx2Le>();

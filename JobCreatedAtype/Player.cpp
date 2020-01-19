@@ -13,6 +13,7 @@
 #include "GameObjectManager.h"
 #include "CollisionManager.h"
 #include "ModelMap.h"
+#include "Coin.h"
 
 #include "CharacterState.h"
 #include "StandState.h"
@@ -28,6 +29,7 @@ const float Player::INITIALIZE_ANGLE = 90.0f;
 Player::Player()
 	: GameObject("Player")
 	, m_angle(0.4f)
+	, m_coin(nullptr)
 {
 	// モデルデータの読み込み
 	DirectX::EffectFactory fx(GameContext<DX::DeviceResources>::Get()->GetD3DDevice());

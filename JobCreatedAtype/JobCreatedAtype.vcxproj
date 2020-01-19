@@ -193,6 +193,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="Goal.h" />
     <ClInclude Include="Idling.h" />
     <ClInclude Include="KnockBackState.h" />
     <ClInclude Include="MapPosition.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="Goal.cpp" />
     <ClCompile Include="Idling.cpp" />
     <ClCompile Include="KnockBackState.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -275,6 +277,7 @@
     <MeshContentTask Include="Resources\Models\Enemy.FBX" />
     <MeshContentTask Include="Resources\Models\humanoid.FBX" />
     <MeshContentTask Include="Resources\Models\skydoom.FBX" />
+    <MeshContentTask Include="Resources\Models\Village_Gate.fbx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\StageData\map.csv" />

@@ -5,6 +5,7 @@
 #include "DeviceResources.h"
 
 #include "Transform.h"
+#include "Player.h"
 #include "MapPosition.h"
 #include "ModelMap.h"
 #include "GameContext.h"
@@ -19,7 +20,6 @@
 
 Coin::Coin()
 	: GameObject("Coin")
-	, m_getFlag(false)
 {
 	ID3D11Device* device = GameContext<DX::DeviceResources>::Get()->GetD3DDevice();
 	// モデルデータの読み込み
@@ -70,6 +70,6 @@ void Coin::Render()
 void Coin::OnCollision(GameObject * object)
 {
 	m_activeFlag = false;
-	m_getFlag = true;
+	static_cast<Player*>(object)->SetCoin(this);
 	GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_02);
 }

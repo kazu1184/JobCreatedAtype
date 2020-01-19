@@ -11,6 +11,7 @@
 #include <Keyboard.h>
 
 class RayCollider;
+class Coin;
 
 class CharacterState;
 class StandState;
@@ -35,6 +36,8 @@ class Player : public GameObject
 	private:
 		// プレイヤーモデル
 		std::unique_ptr<DirectX::Model> m_playerModel;
+		// コイン
+		Coin* m_coin;
 		// カメラとプレイヤーの向いている角度
 		float m_angle;
 		// マップポジション
@@ -79,6 +82,9 @@ class Player : public GameObject
 		float GetAngle() { return m_angle; }
 
 		MapPosition* GetMapPosition() { return m_playerMapPos; }
+
+		Coin* GetCoin() { return m_coin; }
+		void SetCoin(Coin* coin) { m_coin = coin; }
 
 		// 状態遷移
 		void ChangeState(CharacterState* state)

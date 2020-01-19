@@ -193,6 +193,9 @@
     <ClInclude Include="Coin.h">
       <Filter>GameObject\Character\CoinItem</Filter>
     </ClInclude>
+    <ClInclude Include="Goal.h">
+      <Filter>GameObject\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -301,6 +304,9 @@
     <ClCompile Include="Coin.cpp">
       <Filter>GameObject\Character\CoinItem</Filter>
     </ClCompile>
+    <ClCompile Include="Goal.cpp">
+      <Filter>GameObject\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -326,6 +332,9 @@
       <Filter>Assets</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Resources\Models\Coin.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Resources\Models\Village_Gate.fbx">
       <Filter>Assets</Filter>
     </MeshContentTask>
   </ItemGroup>
