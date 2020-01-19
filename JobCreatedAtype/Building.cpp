@@ -46,6 +46,7 @@ Building::~Building()
 void Building::Update()
 {
 	GameObject::Update();
+	m_activeFlag = true;
 }
 
 void Building::Render()

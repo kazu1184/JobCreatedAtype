@@ -10,11 +10,15 @@
 
 #include <SimpleMath.h>
 #include "DeviceResources.h"
+#include "DebugFont.h"
 
 #include "GameContext.h"
+#include "CollisionManager.h"
+#include "SphereCollider.h"
+#include "Transform.h"
 
 //定数の定義
-const DirectX::SimpleMath::Vector3 FollowCamera::TARGET_TO_EYE_VEC(0.0f, 10.0f, 15.0f);  //カメラの距離
+const DirectX::SimpleMath::Vector3 FollowCamera::TARGET_TO_EYE_VEC(0.0f, 5.0f, 10.0f);  //カメラの距離
 const float FollowCamera::TIME_TO_TURN = 0.3f;                                          //保管して回る時間
 const float FollowCamera::TIME_TO_DELAY = 0.05f;                                        //カメラを遅らせる時間
 
@@ -35,7 +39,6 @@ FollowCamera::FollowCamera(DirectX::SimpleMath::Vector3 target)
 		0.01f,
 		10000.0f);
 }
-
 // デストラクタ
 FollowCamera::~FollowCamera()
 {

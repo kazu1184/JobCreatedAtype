@@ -3,6 +3,9 @@
 #include "BoxCollider.h"
 #include "SphereCollider.h"
 #include "CollisionManager.h"
+// Debug
+#include "GameContext.h"
+#include "DeviceResources.h"
 
 
 RayCollider::RayCollider()

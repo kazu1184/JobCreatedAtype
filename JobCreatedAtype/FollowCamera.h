@@ -7,7 +7,9 @@
 #pragma once
 #include "SimpleMath.h"
 
-class FollowCamera
+class RayCollider;
+
+class FollowCamera 
 {
 	public: //メンバ定数:public
 
@@ -27,6 +29,8 @@ class FollowCamera
 		DirectX::SimpleMath::Matrix m_view;
 		// プロジェクション
 		DirectX::SimpleMath::Matrix m_projection;
+		// スクリーンマトリックス
+		DirectX::SimpleMath::Matrix m_screenMtx;
 		// 注視点
 		DirectX::SimpleMath::Vector3 m_target;
 		DirectX::SimpleMath::Vector3 m_eye;
@@ -45,9 +49,7 @@ class FollowCamera
 	
 	public: //メンバ関数
 
-		// 更新
 		void Update();
-		//後ろを見る
 		void RotateCamera(const DirectX::SimpleMath::Quaternion& rotation, bool immediately = false);
 	
 	public: //アクセッサ

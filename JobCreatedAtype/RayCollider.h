@@ -17,7 +17,6 @@ class RayCollider : public Collider
 		~RayCollider() = default;
 
 		// ƒƒ“ƒoŠÖ”
-
 		bool IsCollided(const Collider*       collider) const override;
 		bool IsCollided(const SphereCollider* collider) const override;
 		bool IsCollided(const BoxCollider*    collider) const override;

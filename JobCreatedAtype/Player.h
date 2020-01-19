@@ -60,7 +60,7 @@ class Player : public GameObject
 		void Update()override;
 		void Render()override;
 		// “–‚½‚è”»’è
-		virtual void OnCollision(GameObject* object)override;
+		void OnCollision(GameObject* object)override;
 
 		// Œ»İ‚Ìó‘Ô‚ğæ“¾
 		CharacterState* GetCurrentState() { return m_currentState; }

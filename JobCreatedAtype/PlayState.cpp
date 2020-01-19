@@ -36,19 +36,23 @@ PlayState::~PlayState()
 
 void PlayState::Initialize()
 {
-	// オブジェクトマネージャー生成・登録
-	m_objectManager = std::make_unique<GameObjectManager>();
-	GameContext<GameObjectManager>::Register(m_objectManager);
 	// コリジョンマネジャー
 	m_collisionManager = std::make_unique<CollisionManager>();
 	m_collisionManager->AllowCollision("Player", "Floor");
 	m_collisionManager->AllowCollision("Building", "Player");
 	m_collisionManager->AllowCollision("Floor", "Enemy");
 	m_collisionManager->AllowCollision("Player", "Enemy");
+	m_collisionManager->AllowCollision("Building", "Camera");
 	GameContext<CollisionManager>::Register(m_collisionManager);
+
+	// オブジェクトマネージャー生成・登録
+	m_objectManager = std::make_unique<GameObjectManager>();
+	GameContext<GameObjectManager>::Register(m_objectManager);
+
 	// マップの生成・登録
 	std::unique_ptr<ModelMap> map = std::make_unique<ModelMap>();
 	m_objectManager->Add(std::move(map));
+
 	// プレイヤー・エネミーの登録
 	std::unique_ptr<Player> player = std::make_unique<Player>();
 	std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(player.get());
