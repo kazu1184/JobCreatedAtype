@@ -18,7 +18,6 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Coin.h"
-#include "Goal.h"
 #include "FollowCamera.h"
 #include "ModelMap.h"
 
@@ -69,9 +68,6 @@ void PlayState::Initialize()
 	// コインオブジェクトの生成・登録
 	std::unique_ptr<Coin> coin = std::make_unique<Coin>();
 	m_objectManager->Add(std::move(coin));
-
-	std::unique_ptr<Goal> goal = std::make_unique<Goal>();
-	m_objectManager->Add(std::move(goal));
 
 	// オーディオの登録
 	m_audio = std::make_unique<Adx2Le>();

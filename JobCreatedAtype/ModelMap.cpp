@@ -6,6 +6,7 @@
 #include "GameObjectManager.h"
 #include "Building.h"
 #include "Floor.h"
+#include "Goal.h"
 #include "MapPosition.h"
 
 const float ModelMap::MAP_SIZE = 5.0f;
@@ -54,6 +55,15 @@ ModelMap::ModelMap()
 				pos->SetMapPosition(i, j);
 				objManager->Add(std::move(floor));
 			}
+			else if (tileId == TiledMap::MAP_ATTRIBUTE::G)
+			{
+				std::unique_ptr<Goal> goal = std::make_unique<Goal>();
+				goal->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
+				MapPosition* pos = goal->AddComponent<MapPosition>();
+				pos->SetMapPosition(i, j);
+				objManager->Add(std::move(goal));
+			}
+
 		}
 	}
 

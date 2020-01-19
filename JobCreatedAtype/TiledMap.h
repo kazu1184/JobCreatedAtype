@@ -15,7 +15,8 @@ class TiledMap
 		enum MAP_ATTRIBUTE 
 		{
 			O = 1,
-			P = 0 
+			P = 0,
+			G = 2
 		};
 
 	private:

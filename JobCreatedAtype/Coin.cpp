@@ -31,7 +31,7 @@ Coin::Coin()
 	delete factory;
 
 	MapPosition* pos = AddComponent<MapPosition>();
-	pos->SetMapPosition(5, 5);
+	pos->SetMapPosition(7, 5);
 	m_transform = AddComponent<Transform>();
 	m_transform->SetPosition(DirectX::SimpleMath::Vector3(pos->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 2.0f, pos->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
 	m_transform->SetRotation(DirectX::SimpleMath::Vector3(0.0f, 0.0f, 90.0f));
