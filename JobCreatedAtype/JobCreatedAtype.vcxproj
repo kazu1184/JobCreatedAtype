@@ -198,6 +198,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="RandomState.h" />
+    <ClInclude Include="RayCollider.h" />
     <ClInclude Include="ResultState.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Searching.h" />
@@ -242,6 +243,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="RandomState.cpp" />
+    <ClCompile Include="RayCollider.cpp" />
     <ClCompile Include="ResultState.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Searching.cpp" />

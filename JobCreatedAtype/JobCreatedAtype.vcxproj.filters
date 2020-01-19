@@ -178,6 +178,9 @@
     <ClInclude Include="RandomState.h">
       <Filter>GameObject\Character\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="RayCollider.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -276,6 +279,9 @@
     <ClCompile Include="ResultState.cpp" />
     <ClCompile Include="RandomState.cpp">
       <Filter>GameObject\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCollider.cpp">
+      <Filter>Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

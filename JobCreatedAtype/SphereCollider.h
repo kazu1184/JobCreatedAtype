@@ -25,8 +25,8 @@ class SphereCollider : public Collider
 		bool IsCollided(const Collider*       collider) const override;
 		bool IsCollided(const SphereCollider* collider) const override;
 		bool IsCollided(const BoxCollider*    collider) const override;
-	
-	
+		bool IsCollided(const RayCollider*    collider) const override;
+
 	public:
 		float GetRadius() const
 		{

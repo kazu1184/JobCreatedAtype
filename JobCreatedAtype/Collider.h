@@ -14,7 +14,7 @@
 
 class BoxCollider;
 class SphereCollider;
-
+class RayCollider;
 
 class Collider : public Component
 {
@@ -35,6 +35,7 @@ class Collider : public Component
 		virtual bool IsCollided(const Collider*       collider) const = 0;
 		virtual bool IsCollided(const SphereCollider* collider) const = 0;
 		virtual bool IsCollided(const BoxCollider*    collider) const = 0;
+		virtual bool IsCollided(const RayCollider*    collider) const = 0;
 
 		void OnCollision(Collider* object);
 	

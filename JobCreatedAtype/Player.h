@@ -10,6 +10,8 @@
 #include <Model.h>
 #include <Keyboard.h>
 
+class RayCollider;
+
 class CharacterState;
 class StandState;
 class MoveState;

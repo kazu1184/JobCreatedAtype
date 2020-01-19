@@ -7,6 +7,7 @@
 #include "Transform.h"
 #include "MapPosition.h"
 #include "BoxCollider.h"
+#include "RayCollider.h"
 #include "GameContext.h"
 #include "FollowCamera.h"
 #include "GameObjectManager.h"

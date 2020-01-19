@@ -17,7 +17,6 @@
 Building::Building()
 	: GameObject("Building")
 {
-	m_activeFlag = false;
 	ID3D11Device* device = GameContext<DX::DeviceResources>::Get()->GetD3DDevice();
 	// ƒ‚ƒfƒ‹‚Ì“Ç‚İ‚İ
 	DirectX::EffectFactory* factory = new DirectX::EffectFactory(device);

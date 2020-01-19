@@ -16,6 +16,7 @@
 
 class SphereCollider;
 class BoxCollider;
+class RayCollider;
 
 class CollisionManager final
 {
@@ -54,6 +55,18 @@ class CollisionManager final
 		static bool IsCollided(const BoxCollider*    collider1, const BoxCollider*    collider2);
 		static bool IsCollided(const SphereCollider* collider1, const BoxCollider*    collider2);
 		static bool IsCollided(const BoxCollider*    collider1, const SphereCollider* collider2);
+		static bool IsCollided(const BoxCollider*    collider1, const RayCollider*    collider2);
+		static bool IsCollided(const RayCollider*    collider1, const BoxCollider*    collider2);
+		static bool IsCollided(const SphereCollider* collider1, const RayCollider*    collider2);
+		static bool IsCollided(const RayCollider*    collider1, const SphereCollider* collider2);
+
 		static float SqDistPointBox(const DirectX::SimpleMath::Vector3 & p, const BoxCollider * b);
+		static float SqDistPointSegment(DirectX::SimpleMath::Vector3 a, DirectX::SimpleMath::Vector3 b, DirectX::SimpleMath::Vector3 c);
+		// ‚Q‚Â‚Ìü•ª‚ÌÅ’Z‹——£‚Ì•½•û‚ğ•Ô‚·ŠÖ” 
+		static float ClosestPtSegmentSegment(DirectX::SimpleMath::Vector3 p1, DirectX::SimpleMath::Vector3 q1,
+			DirectX::SimpleMath::Vector3 p2, DirectX::SimpleMath::Vector3 q2,
+			float &s, float &t, DirectX::SimpleMath::Vector3& c1, DirectX::SimpleMath::Vector3& c2);
+		// ƒNƒ‰ƒ“ƒvŠÖ”
+		static float Clamp(float n, float min, float max);
 };
 

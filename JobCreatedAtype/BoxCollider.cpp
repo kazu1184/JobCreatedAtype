@@ -8,6 +8,7 @@
 #include "BoxCollider.h"
 #include "SphereCollider.h"
 #include "CollisionManager.h"
+#include "RayCollider.h"
 
 BoxCollider::BoxCollider(const DirectX::SimpleMath::Vector3& size)
 	:m_size(size)
@@ -22,10 +23,15 @@ bool BoxCollider::IsCollided(const Collider * collider) const
 
 bool BoxCollider::IsCollided(const SphereCollider * collider) const
 {
-	return collider->IsCollided(this);
+	return CollisionManager::IsCollided(this, collider);
 }
 
 bool BoxCollider::IsCollided(const BoxCollider * collider) const
+{
+	return CollisionManager::IsCollided(this, collider);
+}
+
+bool BoxCollider::IsCollided(const RayCollider * collider) const
 {
 	return CollisionManager::IsCollided(this, collider);
 }
