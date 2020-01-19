@@ -41,7 +41,7 @@ Enemy::Enemy(Player * player)
 
 	// 当たり判定
 	SphereCollider* sphere = AddComponent<SphereCollider>();
-	sphere->SetRadius(0.5f);
+	sphere->SetRadius(1.0f);
 	GameContext<CollisionManager>::Get()->Add("Enemy", sphere);
 
 	// 現在のマップポジション
