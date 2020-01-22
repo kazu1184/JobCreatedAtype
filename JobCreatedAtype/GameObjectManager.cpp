@@ -2,6 +2,7 @@
 #include "GameObjectManager.h"
 #include "GameObject.h"
 #include "FollowCamera.h"
+#include "DebugFont.h"
 
 GameObjectManager::GameObjectManager()
 	: m_objects()

@@ -9,13 +9,9 @@
 #include "FollowCamera.h"
 
 #include <SimpleMath.h>
-#include "DeviceResources.h"
 #include "DebugFont.h"
-
+#include "DeviceResources.h"
 #include "GameContext.h"
-#include "CollisionManager.h"
-#include "SphereCollider.h"
-#include "Transform.h"
 
 //定数の定義
 const DirectX::SimpleMath::Vector3 FollowCamera::TARGET_TO_EYE_VEC(0.0f, 5.0f, 10.0f);  //カメラの距離
@@ -30,7 +26,7 @@ FollowCamera::FollowCamera(DirectX::SimpleMath::Vector3 target)
 	float aspectRatio = float(size.right) / float(size.bottom);
 
 	// 画角を設定
-	float fovAngleY = DirectX::XMConvertToRadians(45.0f);
+	float fovAngleY = DirectX::XMConvertToRadians(60.0f);
 
 	// プロジェクション行列計算・設定
 	m_projection = DirectX::SimpleMath::Matrix::CreatePerspectiveFieldOfView(

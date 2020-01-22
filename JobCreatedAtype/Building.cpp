@@ -33,8 +33,8 @@ Building::Building()
 	m_transform = AddComponent<Transform>();
 	// “–‚½‚è”»’è‚Ì’Ç‰Á
 	BoxCollider* box = AddComponent<BoxCollider>();
-	box->SetSize(DirectX::SimpleMath::Vector3(ModelMap::MAP_SIZE, ModelMap::MAP_SIZE, ModelMap::MAP_SIZE));
-	box->SetOffset(m_transform->GetPosition());
+	box->SetSize(DirectX::SimpleMath::Vector3(ModelMap::MAP_SIZE, 5.0f, ModelMap::MAP_SIZE));
+	box->SetOffset(DirectX::SimpleMath::Vector3(0.0f,2.5f,0.0f));
 	GameContext<CollisionManager>::Get()->Add(GetTag(), box);
 }
 
@@ -45,6 +45,8 @@ Building::~Building()
 
 void Building::Update()
 {
+	if (!m_activeFlag)
+		return;
 	GameObject::Update();
 	m_activeFlag = true;
 }
@@ -53,6 +55,7 @@ void Building::Render()
 {
 	if (!m_activeFlag)
 		return;
+	//GameObject::Render();
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
@@ -64,4 +67,6 @@ void Building::Render()
 
 void Building::OnCollision(GameObject * object)
 {
+	if (!m_activeFlag)
+		return;
 }

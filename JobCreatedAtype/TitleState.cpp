@@ -11,10 +11,13 @@
 #include "DebugFont.h"
 #include "GameContext.h"
 #include "GameStateManager.h"
+#include "DeviceResources.h"
+ 
+#include <WICTextureLoader.h>
+#include <Keyboard.h>
 
 TitleState::TitleState()
 	: GameState()
-	, m_count(0)
 {
 }
 
@@ -24,30 +27,30 @@ TitleState::~TitleState()
 
 void TitleState::Initialize()
 {
-	m_count = 0;
+	Microsoft::WRL::ComPtr<ID3D11Resource> resource;
+	DirectX::CreateWICTextureFromFile(GameContext<DX::DeviceResources>::Get()->GetD3DDevice(),
+		L"Resources\\Textures\\title.png", resource.GetAddressOf(), m_resultTexture.GetAddressOf());
 }
 
 void TitleState::Update()
 {
-	m_count++;
 
-	if (m_count > 120)
+	DirectX::Keyboard::State keyState = DirectX::Keyboard::Get().GetState();
+	if (keyState.IsKeyDown(DirectX::Keyboard::Space))
 	{
 		GameStateManager* gameStateManager = GameContext<GameStateManager>().Get();
-		gameStateManager->RequestState("Play");
-		m_count = 0;
+		gameStateManager->PushState("Play");
 	}
 }
 
 void TitleState::Render()
 {
-	DebugFont* debugFont = DebugFont::GetInstance();
-	debugFont->print(10, 10, L"TitleState");
-	debugFont->draw();
-	debugFont->print(10, 40, L"%3d / 120", m_count);
-	debugFont->draw();
+	DirectX::SpriteBatch* sprite = GameContext<DirectX::SpriteBatch>::Get();
+	sprite->Begin();
+	sprite->Draw(m_resultTexture.Get(), GameContext<DX::DeviceResources>::Get()->GetOutputSize());
+	sprite->End();
 }
-
+ 
 void TitleState::Finalize()
 {
 }

@@ -199,6 +199,9 @@ void Game::CreateDeviceDependentResources()
 	// コモンステート作成 
 	m_state = std::make_unique<CommonStates>(m_deviceResources->GetD3DDevice());
 	GameContext<DirectX::CommonStates>::Register(m_state);
+	// スプライトバッチの作成 
+	m_pSprites = std::make_unique<SpriteBatch>(m_deviceResources->GetD3DDeviceContext());
+	GameContext<SpriteBatch>::Register(m_pSprites);
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.

@@ -10,7 +10,6 @@
 #include <Model.h>
 #include <Keyboard.h>
 
-class RayCollider;
 class Coin;
 
 class CharacterState;

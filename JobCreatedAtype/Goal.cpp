@@ -35,6 +35,8 @@ Goal::Goal()
 	);
 	delete factory;
 
+	m_flag = false;
+
 	// à íuèÓïÒÇÃí«â¡
 	m_transform = AddComponent<Transform>();
 	m_transform->SetScale(DirectX::SimpleMath::Vector3(0.5f, 1.0f, 1.0f));
@@ -55,20 +57,20 @@ Goal::~Goal()
 
 void Goal::Update()
 {
+	if (!m_activeFlag)
+		return;
 	GameObject::Update();
 }
 
 void Goal::Render()
 {
+	if (!m_activeFlag)
+		return;
+
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	
-	// ÉWÉIÉÅÉgÉäÇÃçÏê¨
-	m_player = DirectX::GeometricPrimitive::CreateBox(deviceResources->GetD3DDeviceContext(),GetComponent<BoxCollider>()->GetSize());
-	// ï`âÊ
-	m_player->Draw(DirectX::SimpleMath::Matrix::CreateTranslation(GetComponent<BoxCollider>()->GetPosition()) , camera->GetView(), camera->GetProjection(), DirectX::Colors::Green);
-
 
 	// ï`âÊ
 	m_goalModel->Draw(deviceResources->GetD3DDeviceContext(), *GameContext<DirectX::CommonStates>::Get(),
@@ -77,11 +79,17 @@ void Goal::Render()
 
 void Goal::OnCollision(GameObject * object)
 {
+	if (!m_activeFlag)
+		return;
 
 	if (static_cast<Player*>(object)->GetCoin() != nullptr)
 	{
-		GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03);
-		if (!GameContext<Adx2Le>::Get()->IsPlayEndedByID(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03))
+		if (!m_flag)
+		{
+			m_flag = true;
+			GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03);
+		}
+		if (GameContext<Adx2Le>::Get()->IsPlayEndedByID(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03))
 			GameContext<GameStateManager>::Get()->RequestState("Result");
 	}
 }

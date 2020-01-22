@@ -44,7 +44,7 @@ Enemy::Enemy(Player * player)
 
 	// 当たり判定
 	SphereCollider* sphere = AddComponent<SphereCollider>();
-	sphere->SetRadius(1.0f);
+	sphere->SetRadius(3.0f);
 	GameContext<CollisionManager>::Get()->Add("Enemy", sphere);
 
 	// 現在のマップポジション
@@ -93,6 +93,9 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
+	if (!m_activeFlag)
+		return;
+
 	// コンポーネントの更新
 	GameObject::Update();
 
@@ -184,6 +187,9 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
+	if (!m_activeFlag)
+		return;
+
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	// エネミーモデルの描画
@@ -195,6 +201,9 @@ void Enemy::Render()
 
 void Enemy::OnCollision(GameObject * object)
 {
+	if (!m_activeFlag)
+		return;
+
 	if (object->GetTag() == "Player")
 	{
 		GameContext<GameStateManager>::Get()->RequestState("Result");

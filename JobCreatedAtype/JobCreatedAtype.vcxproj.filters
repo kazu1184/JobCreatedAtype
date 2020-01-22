@@ -180,7 +180,6 @@
     <ClInclude Include="Node.h">
       <Filter>AI</Filter>
     </ClInclude>
-    <ClInclude Include="ResultState.h" />
     <ClInclude Include="RandomState.h">
       <Filter>GameObject\Character\Enemy</Filter>
     </ClInclude>
@@ -195,6 +194,12 @@
     </ClInclude>
     <ClInclude Include="Goal.h">
       <Filter>GameObject\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawingOff.h">
+      <Filter>GameObject\Character\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +296,6 @@
     <ClCompile Include="A_Star.cpp">
       <Filter>AI</Filter>
     </ClCompile>
-    <ClCompile Include="ResultState.cpp" />
     <ClCompile Include="RandomState.cpp">
       <Filter>GameObject\Character\Enemy</Filter>
     </ClCompile>
@@ -306,6 +310,12 @@
     </ClCompile>
     <ClCompile Include="Goal.cpp">
       <Filter>GameObject\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultState.cpp">
+      <Filter>GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawingOff.cpp">
+      <Filter>GameObject\Character\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

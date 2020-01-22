@@ -11,7 +11,7 @@ class Goal : public GameObject
 		// ƒS[ƒ‹ƒ‚ƒfƒ‹
 		std::unique_ptr<DirectX::Model> m_goalModel;
 		std::unique_ptr<DirectX::GeometricPrimitive> m_player;
-
+		bool m_flag;
 	
 	public:
 		Goal();

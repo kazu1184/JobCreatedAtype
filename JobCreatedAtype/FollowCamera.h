@@ -11,12 +11,12 @@ class RayCollider;
 
 class FollowCamera 
 {
-	public: //メンバ定数:public
+	public: //メンバ定数
 
 		//カメラの距離
 		static const DirectX::SimpleMath::Vector3 TARGET_TO_EYE_VEC;
 
-	private: //メンバ定数:private
+	private: //メンバ定数
 
 		//保管して回る時間
 		static const float TIME_TO_TURN;
@@ -29,8 +29,6 @@ class FollowCamera
 		DirectX::SimpleMath::Matrix m_view;
 		// プロジェクション
 		DirectX::SimpleMath::Matrix m_projection;
-		// スクリーンマトリックス
-		DirectX::SimpleMath::Matrix m_screenMtx;
 		// 注視点
 		DirectX::SimpleMath::Vector3 m_target;
 		DirectX::SimpleMath::Vector3 m_eye;
@@ -40,6 +38,8 @@ class FollowCamera
 		DirectX::SimpleMath::Quaternion m_rotation;
 		// 保管用回転
 		DirectX::SimpleMath::Quaternion m_refRotation;
+		// Ray
+		RayCollider* m_ray;
 	
 	
 	public: // コンストラクタ・デストラクタ

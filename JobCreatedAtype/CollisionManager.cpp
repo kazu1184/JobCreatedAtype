@@ -128,8 +128,12 @@ bool CollisionManager::IsCollided(const BoxCollider * collider1, const SphereCol
 
 bool CollisionManager::IsCollided(const BoxCollider * collider1, const RayCollider * collider2)
 {
+	DirectX::SimpleMath::Vector3 vel = collider1->GetPosition() - collider2->GetStartRay();
+	float length = vel.Length();
+	if (fabs(length) > collider2->GetLength())
+		return false;
 	// 方向ベクトル正規化
-	DirectX::SimpleMath::Vector3 end = collider2->GetEndRay();
+ 	DirectX::SimpleMath::Vector3 end = collider2->GetEndRay();
 	end.Normalize();
 	// 直線を境界ボックスの空間へ移動
 	DirectX::SimpleMath::Matrix invMat = collider1->GetParent()->GetTransform()->GetWorld().Invert();
@@ -144,12 +148,12 @@ bool CollisionManager::IsCollided(const BoxCollider * collider1, const RayCollid
 	memcpy(p, &p_l, sizeof(DirectX::SimpleMath::Vector3));
 	memcpy(d, &dir_l, sizeof(DirectX::SimpleMath::Vector3));
 
-	min[0] = collider1->GetPosition().x - collider1->GetSize().x;
-	min[1] = collider1->GetPosition().y - collider1->GetSize().y;
-	min[2] = collider1->GetPosition().z - collider1->GetSize().z;
-	max[0] = collider1->GetPosition().x + collider1->GetSize().x;
-	max[1] = collider1->GetPosition().y + collider1->GetSize().y;
-	max[2] = collider1->GetPosition().z + collider1->GetSize().z;
+	min[0] = - collider1->GetSize().x;
+	min[1] = - collider1->GetSize().y;
+	min[2] = - collider1->GetSize().z;
+	max[0] = + collider1->GetSize().x;
+	max[1] = + collider1->GetSize().y;
+	max[2] = + collider1->GetSize().z;
 
 	float tmp_t = -FLT_MAX;
 	float t_max = FLT_MAX;
@@ -184,7 +188,7 @@ bool CollisionManager::IsCollided(const BoxCollider * collider1, const RayCollid
 	//{
 	//	*t = tmp_t;
 	//}
-	//// 交差している
+	// 交差している
 	//if (colPos) {
 	//	*colPos = nLine.start + tmp_t * nLine.end;
 	//}

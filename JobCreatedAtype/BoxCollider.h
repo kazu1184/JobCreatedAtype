@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Collider.h"
+#include <GeometricPrimitive.h>
 
 class SphereCollider;
 
@@ -14,8 +15,8 @@ class BoxCollider : public Collider
 {
 	private:
 		DirectX::SimpleMath::Vector3 m_size;
-	
-	
+		std::unique_ptr<DirectX::GeometricPrimitive> m_debug;
+
 	public:
 
 		// コンストラクタ・デストラクタ
@@ -24,7 +25,7 @@ class BoxCollider : public Collider
 		~BoxCollider() = default;
 	
 		// メンバ関数
-
+		void Render()override;
 		bool IsCollided(const Collider*       collider) const override;
 		bool IsCollided(const SphereCollider* collider) const override;
 		bool IsCollided(const BoxCollider*    collider) const override;

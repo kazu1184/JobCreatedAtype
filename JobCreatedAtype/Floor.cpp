@@ -45,11 +45,16 @@ Floor::~Floor()
 
 void Floor::Update()
 {
+	if (!m_activeFlag)
+		return;
 	GameObject::Update();
 }
 
 void Floor::Render()
 {
+	if (!m_activeFlag)
+		return;
+
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();

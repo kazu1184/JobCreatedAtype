@@ -31,7 +31,7 @@ Coin::Coin()
 	delete factory;
 
 	MapPosition* pos = AddComponent<MapPosition>();
-	pos->SetMapPosition(7, 5);
+	pos->SetMapPosition(1, 16);
 	m_transform = AddComponent<Transform>();
 	m_transform->SetPosition(DirectX::SimpleMath::Vector3(pos->GetX() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2, 2.0f, pos->GetY() * ModelMap::MAP_SIZE + ModelMap::MAP_SIZE / 2));
 	m_transform->SetRotation(DirectX::SimpleMath::Vector3(0.0f, 0.0f, 90.0f));
@@ -49,6 +49,8 @@ Coin::~Coin()
 
 void Coin::Update()
 {
+	if (!m_activeFlag)
+		return;
 	// コンポーネントの更新
 	GameObject::Update();
 }
@@ -69,7 +71,11 @@ void Coin::Render()
 
 void Coin::OnCollision(GameObject * object)
 {
+	if (!m_activeFlag)
+		return;
+
 	m_activeFlag = false;
 	static_cast<Player*>(object)->SetCoin(this);
 	GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_02);
+	GetComponent<SphereCollider>()->SetRadius(0.0f);
 }

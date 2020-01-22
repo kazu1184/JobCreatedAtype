@@ -8,11 +8,12 @@
 
 #include "GameState.h"
 
+#include "SpriteBatch.h"
+
 class TitleState : public GameState
 {
 	private: 
-		// DebugƒJƒEƒ“ƒg
-		int m_count;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_resultTexture;
 
 	public:
 

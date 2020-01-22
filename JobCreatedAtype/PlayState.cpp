@@ -20,6 +20,7 @@
 #include "Coin.h"
 #include "FollowCamera.h"
 #include "ModelMap.h"
+#include "MapPosition.h"
 
 #include "GameStateManager.h"
 #include "GameObjectManager.h"
@@ -46,7 +47,7 @@ void PlayState::Initialize()
 	m_collisionManager->AllowCollision("Building", "Player");
 	m_collisionManager->AllowCollision("Floor", "Enemy");
 	m_collisionManager->AllowCollision("Player", "Enemy");
-	m_collisionManager->AllowCollision("Building", "Camera");
+	m_collisionManager->AllowCollision("Building", "DrawOff");
 	m_collisionManager->AllowCollision("Coin", "Player");
 	m_collisionManager->AllowCollision("Goal", "Player");
 	GameContext<CollisionManager>::Register(m_collisionManager);
@@ -59,15 +60,21 @@ void PlayState::Initialize()
 	std::unique_ptr<ModelMap> map = std::make_unique<ModelMap>();
 	m_objectManager->Add(std::move(map));
 
-	// プレイヤー・エネミーの登録
-	std::unique_ptr<Player> player = std::make_unique<Player>();
-	std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(player.get());
-	m_objectManager->Add(std::move(player));
-	m_objectManager->Add(std::move(enemy));
-
 	// コインオブジェクトの生成・登録
 	std::unique_ptr<Coin> coin = std::make_unique<Coin>();
 	m_objectManager->Add(std::move(coin));
+
+	// プレイヤー・エネミーの登録
+	std::unique_ptr<Player> player = std::make_unique<Player>();
+	std::vector<std::unique_ptr<Enemy>> enemy;
+	for (int i = 0; i < 5; i++)
+	{
+		enemy.push_back(std::make_unique<Enemy>(player.get()));
+	}
+	m_objectManager->Add(std::move(player));
+	for (int i = 0; i < 5; i++)
+		m_objectManager->Add(std::move(enemy[i]));
+
 
 	// オーディオの登録
 	m_audio = std::make_unique<Adx2Le>();

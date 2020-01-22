@@ -7,6 +7,7 @@
 #include <Keyboard.h>
 #include <Mouse.h>
 #include <CommonStates.h>
+#include <SpriteBatch.h>
 
 #include "DeviceResources.h"
 #include "StepTimer.h"
@@ -65,4 +66,7 @@ private:
 	std::unique_ptr<DirectX::Keyboard>      m_keyboard;
 	// コモンステート
 	std::unique_ptr<DirectX::CommonStates>	m_state;
+	// スプライトバッチ
+	std::unique_ptr<DirectX::SpriteBatch> m_pSprites;
+
 };

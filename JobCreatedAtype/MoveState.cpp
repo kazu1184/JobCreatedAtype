@@ -15,7 +15,7 @@
 #include "Transform.h"
 #include "FollowCamera.h"
 
-const float MoveState::PLAYER_SPEED = 0.3f;
+const float MoveState::PLAYER_SPEED = 0.2f;
 
 MoveState::MoveState()
 {

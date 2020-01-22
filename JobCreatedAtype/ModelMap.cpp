@@ -38,28 +38,26 @@ ModelMap::ModelMap()
 			// ˆÊ’u‚ÌŒvŽZ
 			float x = i * MAP_SIZE - offsetX;
 			float z = j * MAP_SIZE - offsetZ;
+
+			std::unique_ptr<Floor> floor = std::make_unique<Floor>();
+			floor->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
+			MapPosition* pos = floor->AddComponent<MapPosition>();
+			pos->SetMapPosition(i, j);
+			objManager->Add(std::move(floor));
 		
 			if (tileId == TiledMap::MAP_ATTRIBUTE::O)
 			{
 				std::unique_ptr<Building> buil = std::make_unique<Building>();
 				buil->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
-				MapPosition* pos = buil->AddComponent<MapPosition>();
+				pos = buil->AddComponent<MapPosition>();
 				pos->SetMapPosition(i, j);
 				objManager->Add(std::move(buil));
-			}
-			else if (tileId == TiledMap::MAP_ATTRIBUTE::P)
-			{
-				std::unique_ptr<Floor> floor = std::make_unique<Floor>();
-				floor->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
-				MapPosition* pos = floor->AddComponent<MapPosition>();
-				pos->SetMapPosition(i, j);
-				objManager->Add(std::move(floor));
 			}
 			else if (tileId == TiledMap::MAP_ATTRIBUTE::G)
 			{
 				std::unique_ptr<Goal> goal = std::make_unique<Goal>();
 				goal->GetTransform()->SetPosition(DirectX::SimpleMath::Vector3(x, offsetY, z));
-				MapPosition* pos = goal->AddComponent<MapPosition>();
+				pos = goal->AddComponent<MapPosition>();
 				pos->SetMapPosition(i, j);
 				objManager->Add(std::move(goal));
 			}

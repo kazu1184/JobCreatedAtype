@@ -10,6 +10,9 @@
 #include "DebugFont.h"
 #include "GameContext.h"
 #include "GameStateManager.h"
+#include "DeviceResources.h"
+
+#include <WICTextureLoader.h>
 
 ResultState::ResultState()
 	: GameState()
@@ -25,6 +28,10 @@ ResultState::~ResultState()
 void ResultState::Initialize()
 {
 	m_count = 0;
+
+	Microsoft::WRL::ComPtr<ID3D11Resource> resource;
+	DirectX::CreateWICTextureFromFile(GameContext<DX::DeviceResources>::Get()->GetD3DDevice(),
+		L"Resources\\Textures\\GameOver.png", resource.GetAddressOf(), m_resultTexture.GetAddressOf());
 }
 
 void ResultState::Update()
@@ -41,6 +48,11 @@ void ResultState::Update()
 
 void ResultState::Render()
 {
+	DirectX::SpriteBatch* sprite = GameContext<DirectX::SpriteBatch>::Get();
+	sprite->Begin();
+	sprite->Draw(m_resultTexture.Get(), GameContext<DX::DeviceResources>::Get()->GetOutputSize());
+	sprite->End();
+
 	DebugFont* debugFont = DebugFont::GetInstance();
 	debugFont->print(10, 10, L"ResultState");
 	debugFont->draw();
