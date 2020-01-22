@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "Transform.h"
 
+
 GameObject::GameObject(const std::string& tag)
 	: m_componentList()
 	, m_deleteFlag(false)

@@ -47,7 +47,7 @@ void PlayState::Initialize()
 	m_collisionManager->AllowCollision("Building", "Player");
 	m_collisionManager->AllowCollision("Floor", "Enemy");
 	m_collisionManager->AllowCollision("Player", "Enemy");
-	m_collisionManager->AllowCollision("Building", "DrawOff");
+	m_collisionManager->AllowCollision("RayCheck", "DrawOff");
 	m_collisionManager->AllowCollision("Coin", "Player");
 	m_collisionManager->AllowCollision("Goal", "Player");
 	GameContext<CollisionManager>::Register(m_collisionManager);

@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "FollowCamera.h"
 #include "DebugFont.h"
+#include "Transform.h"
 
 GameObjectManager::GameObjectManager()
 	: m_objects()
@@ -68,6 +69,23 @@ std::vector<GameObject*> GameObjectManager::Find(const std::string & tag) const
 		{
 			result.push_back(object.get());
 		}
+	}
+
+	return result;
+}
+
+std::vector<GameObject*> GameObjectManager::GetGameObjects() const
+{
+	std::vector<GameObject*> result;
+
+	for (const GameObjectPtr& object : m_objects)
+	{
+		result.push_back(object.get());
+	}
+
+	for (const GameObjectPtr& object : m_objectQueue)
+	{
+		result.push_back(object.get());
 	}
 
 	return result;

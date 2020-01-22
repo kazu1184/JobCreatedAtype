@@ -10,6 +10,8 @@
 #include "CollisionManager.h"
 #include "DeviceResources.h"
 
+const float DrawingOff::DROW_LENGTH = 30;
+
 DrawingOff::DrawingOff(Player* player)
 	: GameObject("DrawOff")
 	, m_player(player)
@@ -41,6 +43,22 @@ void DrawingOff::Update()
 	m_ray->SetOffset(- camera->getEye() / 2);
 	m_ray->SetStartRay(camera->getEye() + m_transform->GetPosition());
 	m_ray->SetEndRay(-DirectX::SimpleMath::Vector3(camera->getEye().x,1.0f,camera->getEye().z));
+
+	auto objVector = GameContext<GameObjectManager>::Get()->GetGameObjects();
+
+	for (auto obj : objVector)
+	{
+		Transform* pos = obj->GetTransform();
+		if (pos != nullptr)
+		{
+			float length = (pos->GetPosition() - m_player->GetTransform()->GetPosition()).Length();
+
+			if (length <= DROW_LENGTH)
+				obj->SetActive(true);
+			else
+				obj->SetActive(false);
+		}
+	}
 }
 
 void DrawingOff::Render()

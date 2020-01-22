@@ -92,10 +92,7 @@ Enemy::~Enemy()
 }
 
 void Enemy::Update()
-{
-	if (!m_activeFlag)
-		return;
-
+{       
 	// コンポーネントの更新
 	GameObject::Update();
 
@@ -187,6 +184,14 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
+	//DebugFont* debug = DebugFont::GetInstance();
+	//debug->print(10, 10, L"X :  %f", m_transform->GetPosition().x);
+	//debug->draw();
+	//debug->print(10, 30, L"Y :  %f", m_transform->GetPosition().y);
+	//debug->draw();
+	//debug->print(10, 50, L"Z :  %f", m_transform->GetPosition().z);
+	//debug->draw();
+
 	if (!m_activeFlag)
 		return;
 
@@ -201,9 +206,6 @@ void Enemy::Render()
 
 void Enemy::OnCollision(GameObject * object)
 {
-	if (!m_activeFlag)
-		return;
-
 	if (object->GetTag() == "Player")
 	{
 		GameContext<GameStateManager>::Get()->RequestState("Result");
@@ -211,7 +213,7 @@ void Enemy::OnCollision(GameObject * object)
 
 	if (object->GetTag() == "Floor")
 	{
-		m_currentPosition->SetMapPosition(object->GetComponent<MapPosition>());
+ 		m_currentPosition->SetMapPosition(object->GetComponent<MapPosition>());
 	}
 
 }

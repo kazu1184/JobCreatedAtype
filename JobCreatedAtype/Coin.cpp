@@ -74,8 +74,6 @@ void Coin::OnCollision(GameObject * object)
 	if (!m_activeFlag)
 		return;
 
-	m_activeFlag = false;
-	static_cast<Player*>(object)->SetCoin(this);
 	GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_02);
 	GetComponent<SphereCollider>()->SetRadius(0.0f);
 }

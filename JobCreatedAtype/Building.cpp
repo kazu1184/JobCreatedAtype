@@ -36,6 +36,11 @@ Building::Building()
 	box->SetSize(DirectX::SimpleMath::Vector3(ModelMap::MAP_SIZE, 5.0f, ModelMap::MAP_SIZE));
 	box->SetOffset(DirectX::SimpleMath::Vector3(0.0f,2.5f,0.0f));
 	GameContext<CollisionManager>::Get()->Add(GetTag(), box);
+
+	BoxCollider* rayCheck = AddComponent<BoxCollider>();
+	rayCheck->SetSize(DirectX::SimpleMath::Vector3(2.5f, 5.0f, 2.5f));
+	rayCheck->SetOffset(DirectX::SimpleMath::Vector3(0.0f, 2.5f, 0.0f));
+	GameContext<CollisionManager>::Get()->Add("RayCheck", rayCheck);
 }
 
 
@@ -45,6 +50,7 @@ Building::~Building()
 
 void Building::Update()
 {
+	//m_activeFlag = true;
 	if (!m_activeFlag)
 		return;
 	GameObject::Update();
@@ -55,7 +61,7 @@ void Building::Render()
 {
 	if (!m_activeFlag)
 		return;
-	//GameObject::Render();
+	GameObject::Render();
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();

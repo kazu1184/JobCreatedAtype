@@ -38,7 +38,7 @@ class GameObjectManager final
 		void Render();
 		void Add(GameObjectPtr&& object);
 		std::vector<GameObject*> Find(const std::string& tag) const;
-
+		std::vector<GameObject*> GetGameObjects()const;
 		// アクセッサ
 		FollowCamera* GetCamera()
 		{
