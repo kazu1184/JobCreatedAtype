@@ -60,14 +60,13 @@ void Building::Update()
 void Building::Render()
 {
 	if (!m_activeFlag)
-		return;
 	GameObject::Render();
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	// •`‰æ
 	m_mapObjs->Draw(deviceResources->GetD3DDeviceContext(), *GameContext<DirectX::CommonStates>::Get(),
-		m_transform->GetWorld(), camera->GetView(), camera->GetProjection());
+		m_transform->GetWorld(), camera->GetView(), camera->GetProjection(), m_activeFlag ? false : true);
 
 }
 

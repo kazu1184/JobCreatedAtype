@@ -49,7 +49,7 @@ void DrawingOff::Update()
 	for (auto obj : objVector)
 	{
 		Transform* pos = obj->GetTransform();
-		if (pos != nullptr)
+		if (pos != nullptr && obj->GetTag() != "Coin")
 		{
 			float length = (pos->GetPosition() - m_player->GetTransform()->GetPosition()).Length();
 
