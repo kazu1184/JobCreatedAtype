@@ -65,7 +65,7 @@
     <Filter Include="Audio">
       <UniqueIdentifier>{ddea10d7-a63b-46da-bf34-95fe4cec8870}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Character\CoinItem">
+    <Filter Include="GameObject\CoinItem">
       <UniqueIdentifier>{0d0df751-8896-411e-9290-82659941a0ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -190,7 +190,7 @@
       <Filter>Audio</Filter>
     </ClInclude>
     <ClInclude Include="Coin.h">
-      <Filter>GameObject\Character\CoinItem</Filter>
+      <Filter>GameObject\CoinItem</Filter>
     </ClInclude>
     <ClInclude Include="Goal.h">
       <Filter>GameObject\Map</Filter>
@@ -306,7 +306,7 @@
       <Filter>Audio</Filter>
     </ClCompile>
     <ClCompile Include="Coin.cpp">
-      <Filter>GameObject\Character\CoinItem</Filter>
+      <Filter>GameObject\CoinItem</Filter>
     </ClCompile>
     <ClCompile Include="Goal.cpp">
       <Filter>GameObject\Map</Filter>

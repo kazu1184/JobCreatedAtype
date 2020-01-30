@@ -36,6 +36,7 @@ void DrawingOff::Update()
 	if (!m_activeFlag)
 		return;
 	GameObject::Update();
+
 	m_transform->SetPosition(m_player->GetTransform()->GetPosition());
 	// ƒJƒƒ‰‚ÌXV
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
@@ -81,6 +82,4 @@ void DrawingOff::OnCollision(GameObject * object)
 {
 	if (!m_activeFlag)
 		return;
-	if (object->GetTag() == "Building")
-		object->SetActive(false);
 }

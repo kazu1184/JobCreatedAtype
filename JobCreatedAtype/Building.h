@@ -8,6 +8,8 @@ class Building : public GameObject
 	private:
 		// ビルモデル
 		std::unique_ptr<DirectX::Model> m_mapObjs;
+		// 描画OFFフラグ
+		bool m_drawFlag;
 
 	public:
 		// コンストラクタ・デストラクタ

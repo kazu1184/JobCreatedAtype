@@ -16,6 +16,7 @@
 
 Building::Building()
 	: GameObject("Building")
+	, m_drawFlag(false)
 {
 	ID3D11Device* device = GameContext<DX::DeviceResources>::Get()->GetD3DDevice();
 	// ÉÇÉfÉãÇÃì«Ç›çûÇ›
@@ -54,24 +55,25 @@ void Building::Update()
 	if (!m_activeFlag)
 		return;
 	GameObject::Update();
-	m_activeFlag = true;
+	m_drawFlag = false;
 }
 
 void Building::Render()
 {
 	if (!m_activeFlag)
+		return;
 	GameObject::Render();
 	DX::DeviceResources* deviceResources = GameContext<DX::DeviceResources>::Get();
 
 	FollowCamera* camera = GameContext<GameObjectManager>::Get()->GetCamera();
 	// ï`âÊ
 	m_mapObjs->Draw(deviceResources->GetD3DDeviceContext(), *GameContext<DirectX::CommonStates>::Get(),
-		m_transform->GetWorld(), camera->GetView(), camera->GetProjection(), m_activeFlag ? false : true);
+		m_transform->GetWorld(), camera->GetView(), camera->GetProjection(), m_drawFlag);
 
 }
 
 void Building::OnCollision(GameObject * object)
 {
-	if (!m_activeFlag)
-		return;
+	if (object->GetTag() == "DrawOff")
+		m_drawFlag = true;
 }
