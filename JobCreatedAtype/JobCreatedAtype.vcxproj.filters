@@ -29,15 +29,6 @@
     <Filter Include="Component\Collider\Interface">
       <UniqueIdentifier>{e39aaeed-78cc-466c-aea3-5f6cdd63835a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Manager">
-      <UniqueIdentifier>{f0d77ba5-b265-4cb3-a05c-349b6a910edf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\CollisionManager">
-      <UniqueIdentifier>{5fbf57a2-2e07-45dc-b3f8-81533368e189}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\GameObjectManager">
-      <UniqueIdentifier>{5cc0ad47-9fa7-458c-a2b9-ffcc17fd7692}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Camera">
       <UniqueIdentifier>{df77dabc-91e8-4ba8-8ce0-707c7047e468}</UniqueIdentifier>
     </Filter>
@@ -49,9 +40,6 @@
     </Filter>
     <Filter Include="GameObject\Character\CharacterState">
       <UniqueIdentifier>{dd29b122-ff1c-48ec-9750-43121dd77744}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\StateManager">
-      <UniqueIdentifier>{eaca71aa-0cea-45ef-8bc6-5ff1d3753808}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameObject\Map">
       <UniqueIdentifier>{286592d3-2aa0-4287-a1a6-21270affcfbe}</UniqueIdentifier>
@@ -67,6 +55,15 @@
     </Filter>
     <Filter Include="GameObject\CoinItem">
       <UniqueIdentifier>{0d0df751-8896-411e-9290-82659941a0ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameState\StateManager">
+      <UniqueIdentifier>{eaca71aa-0cea-45ef-8bc6-5ff1d3753808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider\CollisionManager">
+      <UniqueIdentifier>{5fbf57a2-2e07-45dc-b3f8-81533368e189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\GameObjectManager">
+      <UniqueIdentifier>{5cc0ad47-9fa7-458c-a2b9-ffcc17fd7692}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,10 +100,10 @@
       <Filter>Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
-      <Filter>Manager\CollisionManager</Filter>
+      <Filter>Component\Collider\CollisionManager</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
-      <Filter>Manager\GameObjectManager</Filter>
+      <Filter>GameObject\GameObjectManager</Filter>
     </ClInclude>
     <ClInclude Include="FollowCamera.h">
       <Filter>Camera</Filter>
@@ -118,7 +115,7 @@
       <Filter>GameObject\Character\CharacterState</Filter>
     </ClInclude>
     <ClInclude Include="GameStateManager.h">
-      <Filter>Manager\StateManager</Filter>
+      <Filter>GameState\StateManager</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>GameState</Filter>
@@ -210,7 +207,7 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="GameStateManager.cpp">
-      <Filter>Manager\StateManager</Filter>
+      <Filter>GameState\StateManager</Filter>
     </ClCompile>
     <ClCompile Include="DebugFont.cpp">
       <Filter>Debug</Filter>
@@ -231,10 +228,10 @@
       <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
-      <Filter>Manager\CollisionManager</Filter>
+      <Filter>Component\Collider\CollisionManager</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
-      <Filter>Manager\GameObjectManager</Filter>
+      <Filter>GameObject\GameObjectManager</Filter>
     </ClCompile>
     <ClCompile Include="FollowCamera.cpp">
       <Filter>Camera</Filter>

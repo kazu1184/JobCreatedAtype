@@ -84,12 +84,13 @@ void Goal::OnCollision(GameObject * object)
 
 	if (static_cast<Player*>(object)->GetCoin() != nullptr)
 	{
-		if (!m_flag)
-		{
-			m_flag = true;
-			GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03);
-		}
-		if (GameContext<Adx2Le>::Get()->IsPlayEndedByID(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03))
-			GameContext<GameStateManager>::Get()->RequestState("Result");
+		GameContext<GameStateManager>::Get()->RequestState("Result");
+
+		//if (!m_flag)
+		//{
+		//	m_flag = true;
+		//	GameContext<Adx2Le>::Get()->Play(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03);
+		//}
+		//if (GameContext<Adx2Le>::Get()->IsPlayEndedByID(CRI_BGM_ACF_AISACCONTROL_AISACCONTROL_03))
 	}
 }

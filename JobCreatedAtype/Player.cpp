@@ -131,6 +131,9 @@ void Player::OnCollision(GameObject * object)
 	{
 		m_currentState = nullptr;
 	}
+
+	if (object->GetTag() == "Coin")
+		m_coin = static_cast<Coin*>(object);
 }
 
 void Player::CameraOperation(DirectX::Keyboard::State key)
